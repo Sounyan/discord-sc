@@ -21,7 +21,7 @@ function getType(_url) {
 }
 var server = http.createServer(function(req, res) {
   var url =
-    "public" + (req.url.endsWith("/") ? req.url + "index.html" : req.url);
+    (req.url.endsWith("/") ? req.url + "index.html" : req.url);
   console.log(url);
   if (fs.existsSync(url)) {
     fs.readFile(url, (err, data) => {
