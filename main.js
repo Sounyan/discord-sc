@@ -110,7 +110,56 @@ client.on('messageReactionAdd', async (reaction,user) => {
 reaction.message.guild.member(user.id).roles.add("742632018029969418")
 })
 
+client.on("message", async message => {
+  // This event will run on every single message received, from any channel or DM.
 
+  // It's good practice to ignore other bots. This also makes your bot ignore itself
+  // and not get into a spam loop (we call that "botception").
+
+  // Also good practice to ignore any message that does not start with our prefix,
+  // which is set in the configuration file.
+  if (message.content.indexOf(prefix) !== 0) return;
+
+  // Here we separate our "command" name, and our "arguments" for the command.
+  // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
+  // command = say
+  // args = ["Is", "this", "the", "real", "life?"]
+  const args = message.content
+    .slice(prefix.length)
+    .trim()
+    .split(/ +/g);
+  const command = args.shift().toLowerCase();
+
+  if (command === "eval") {
+    // Put your userID here
+    if (message.author.id !== "645581794267234315") return;
+
+    let evaled;
+    try {
+      evaled = await eval(args.join(" "));
+      message.channel.send(inspect(evaled));
+      message.react("check");
+      console.log(inspect(evaled));
+    } catch (error) {
+      console.error(error);
+      message.channel.send({
+        embed: {
+          color: 16757683,
+          title: "⚠エラーが発生しました…⚠",
+          description: "エラー内容```" + error + "```"
+        }
+      });
+      message.react("uncheck");
+    }
+  }
+
+ 
+
+  if (command === "topic") {
+    const topic = args.join(" ");
+    message.channel.setTopic("```"+topic+"```")
+  }
+  })
 
 client.on("ready", () => {
   cron.schedule('*/30 * * * * *', () => {
