@@ -94,3 +94,18 @@ li{
 	visibility: visible;
 	transform: translateY(0);
 }
+
+.Headline{
+  animation: SlideIn 1.6s;
+}
+
+@keyframes SlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-64px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
