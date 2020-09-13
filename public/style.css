@@ -24,22 +24,18 @@
 	-webkit-transform: translateX(0);
 	transform: translateX(0);
 	}
-	20% {
+	25% {
 	-webkit-transform: translateX(-300px);
 	transform: translateX(-300px);
 	}
-	40% {
+	50% {
 	-webkit-transform: translateX(-600px);
 	transform: translateX(-600px);
 	}
-	60% {
+	75% {
 	-webkit-transform: translateX(-900px);
 	transform: translateX(-900px);
-	}
-	80% {
-	-webkit-transform: translateX(-1200px);
-	transform: translateX(-1200px);
-	}
+        }
 	100% {
 	-webkit-transform: translateX(0);
 	transform: translateX(0);
