@@ -13,6 +13,19 @@
 <meta name="theme-color" content="#bb6fff">
 <link rel="stylesheet" href="/style.css">
 <link rel="shortcut icon" href="https://cdn.discordapp.com/icons/706748716077547600/6549d16556ee5674fd44a65ea76812c8.png?size=1024">
+<script>
+$('#animation').css('visibility','hidden');
+$(window).scroll(function(){
+ var windowHeight = $(window).height(),
+     topWindow = $(window).scrollTop();
+ $('#animation').each(function(){
+  var targetPosition = $(this).offset().top;
+  if(topWindow > targetPosition - windowHeight + 100){
+   $(this).addClass("fadeInDown");
+  }
+ });
+});
+</script>
 <title>Perfume!</title>
 </head>
 <body>
