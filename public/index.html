@@ -14,24 +14,30 @@
 <link rel="stylesheet" href="/style.css">
 <link rel="shortcut icon" href="https://cdn.discordapp.com/icons/706748716077547600/6549d16556ee5674fd44a65ea76812c8.png?size=1024">
 <script>
-$('#animation').css('visibility','hidden');
-$(window).scroll(function(){
- var windowHeight = $(window).height(),
-     topWindow = $(window).scrollTop();
- $('#animation').each(function(){
-  var targetPosition = $(this).offset().top;
-  if(topWindow > targetPosition - windowHeight + 100){
-   $(this).addClass("fadeInDown");
-  }
- });
+$(function(){
+	$(window).on('load scroll',function (){
+		$('.animation').each(function(){
+			//ターゲットの位置を取得
+			var target = $(this).offset().top;
+			//スクロール量を取得
+			var scroll = $(window).scrollTop();
+			//ウィンドウの高さを取得
+			var height = $(window).height();
+			//ターゲットまでスクロールするとフェードインする
+			if (scroll > target - height){
+				//クラスを付与
+				$(this).addClass('active');
+			}
+		});
+	});
 });
 </script>
 <title>Perfume!</title>
 </head>
 <body>
-<div>
- <h1 id="animation">宣伝ポータル!</h1>
-</div>
+<ul>
+  <li class="animation"><h1>Discord Share Community</h1></li>
+ </ul>
 <div class="cp_cssslider">
 	<div class="cp_slidewrapper">
 		<div class="cp_slide_item"><img src="https://cdn.discordapp.com/attachments/709020499363233815/754541382986891284/img1.png"></div>
