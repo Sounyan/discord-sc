@@ -13,6 +13,19 @@
 <meta name="theme-color" content="#bb6fff">
 <link rel="stylesheet" href="/style.css">
 <script>
+$(function(){
+　$(window).scroll(function (){
+    $('.effect-fade').each(function(){
+        var elemPos = $(this).offset().top;
+        var scroll = $(window).scrollTop();
+        var windowHeight = $(window).height();
+        if (scroll > elemPos - windowHeight){
+            $(this).addClass('effect-scroll');
+        }
+    });
+　});
+});
+
 window.onload = function() {
   scroll_effect();
 
