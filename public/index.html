@@ -12,6 +12,26 @@
 <meta property="og:image" content="https://cdn.discordapp.com/icons/706748716077547600/6549d16556ee5674fd44a65ea76812c8.png?size=1024">
 <meta name="theme-color" content="#bb6fff">
 <link rel="stylesheet" href="/style.css">
+<script>
+window.onload = function() {
+  scroll_effect();
+
+  $(window).scroll(function(){
+   scroll_effect();
+  });
+
+  function scroll_effect(){
+   $('.effect-fade').each(function(){
+    var elemPos = $(this).offset().top;
+    var scroll = $(window).scrollTop();
+    var windowHeight = $(window).height();
+    if (scroll > elemPos - windowHeight){
+     $(this).addClass('effect-scroll');
+    }
+   });
+  }
+};
+</script>
 <link rel="shortcut icon" href="https://cdn.discordapp.com/icons/706748716077547600/6549d16556ee5674fd44a65ea76812c8.png?size=1024">
 <title>Perfume!</title>
 </head>
