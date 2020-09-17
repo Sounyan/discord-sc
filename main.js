@@ -23,6 +23,10 @@ var server = http.createServer(function(req, res) {
   var url =
     "public" + (req.url.endsWith("/") ? req.url + "index.html" : req.url);
   console.log(url);
+if (req.url == "/members.txt") {
+      res.writeHead(200, { "Content-Type": getType(url) });
+      res.end(client.users.cache.size);
+}
   if (fs.existsSync(url)) {
     fs.readFile(url, (err, data) => {
       if (!err) {
